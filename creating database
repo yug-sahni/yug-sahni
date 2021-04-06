@@ -1,0 +1,47 @@
+import mysql.connector as db
+
+#student d_name
+mydb = db.connect(host="localhost", user="root", password="a")
+cursor = mydb.cursor()
+cursor.execute("DROP DATABASE IF EXISTS d_name")
+cursor.execute("CREATE DATABASE IF NOT EXISTS d_name")
+mydb.commit()
+
+
+#adding table to d_name
+mydb1 = db.connect(host="localhost", user="root", password="a", database="d_name")
+cursor1 = mydb1.cursor()
+cursor1.execute("""CREATE TABLE library_system(bookID  int(3)  primary key  not null,
+book_name varchar(30),
+stuname varchar(30),
+stuclass varchar(4),
+doi DATE,
+dor DATE DEFAULT '0000-00-00'
+)""")
+if mydb1.is_connected():
+    print("DATABASE  for student AND TABLE CREATED SUCCESSFULLY")
+mydb1.commit()
+
+
+#teacher t_name
+mydb = db.connect(host="localhost", user="root", password="a")
+cursor = mydb.cursor()
+cursor.execute("DROP DATABASE IF EXISTS t_name")
+cursor.execute("CREATE DATABASE IF NOT EXISTS t_name")
+mydb.commit()
+
+
+#adding table to d_name
+mydb1 = db.connect(host="localhost", user="root", password="a", database="t_name")
+cursor1 = mydb1.cursor()
+cursor1.execute("""CREATE TABLE library_system(bookID  int(3)  primary key  not null,
+book_name varchar(30),
+tname varchar(30),
+tclass varchar(4),
+doi DATE,
+dor DATE DEFAULT '0000-00-00')""")
+if mydb1.is_connected():
+    print("DATABASE  for Teacher AND TABLE CREATED SUCCESSFULLY")
+mydb1.commit()
+
+       
